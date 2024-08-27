@@ -1,16 +1,14 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
-
 from rest_framework import status
 
-from api.models import Address
+from api.models import User, Address
 
 
 class UserTestCase(TestCase):
     def setUp(self):
-        user1 = User.objects.create_user(username='user1', password='1111')
-        user2 = User.objects.create_user(username='user2', password='1111')
-        user3 = User.objects.create_user(username='user3', password='1111')
+        user1 = User.objects.create_user(email='user1@test.com', username='user1', name='일유저', password='1111')
+        user2 = User.objects.create_user(email='user2@test.com', username='user2', name='이유저', password='1111')
+        user3 = User.objects.create_user(email='user3@test.com', username='user3', name='삼유저', password='1111')
 
         Address.objects.create(user=user1, address='경기도 광주시')
         Address.objects.create(user=user2, address='서울시 양천구')
