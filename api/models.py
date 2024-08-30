@@ -55,6 +55,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     objects = UserManager()
 
+    def set_password(self, raw_password):
+        super(User, self).set_password(raw_password)
+
 
 class Address(TimeStampedModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
